@@ -13,7 +13,7 @@ while (currentDir !== path.parse(currentDir).dir) {
 }
 const pkgPath = currentDir + path.sep + "package.json";
 
-const firstArgument = process.argv[2];
+const firstArgument = process.argv[2].startsWith("v") ? process.argv[2].slice(1) : process.argv[2];
 
 const pkg = JSON.parse(fs.readFileSync(pkgPath, {encoding: "utf-8"}));
 pkg.version = firstArgument;
