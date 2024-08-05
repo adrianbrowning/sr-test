@@ -1,18 +1,18 @@
 FILE=$1
-if [[ -z "${CI}" ]]; then
-  exit 0;
-fi;
-#if [[ $FILE == *'[skip ci]'* ]]; then
-#    exit 0;
-#fi;
-#MESSAGE=$(cat $FILE)
-#TICKET=[$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")]
-#if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* ]];then
+#if [[ -z "${CI}" ]]; then
 #  exit 0;
-#fi
-## Strip leading '['
-#TICKET="${TICKET#\[}"
-## Strip trailing ']'
-#TICKET="${TICKET%\]}"
-#echo $"$TICKET\n\n$MESSAGE" > $FILE
+#fi;
+if [[ $FILE == *'[skip ci]'* ]]; then
+    exit 0;
+fi;
+MESSAGE=$(cat $FILE)
+TICKET=[$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")]
+if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* ]];then
+  exit 0;
+fi
+# Strip leading '['
+TICKET="${TICKET#\[}"
+# Strip trailing ']'
+TICKET="${TICKET%\]}"
+echo $"$TICKET\n\n$MESSAGE" > $FILE
 pnpm exec commitlint --edit "$FILE";
