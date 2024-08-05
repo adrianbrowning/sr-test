@@ -1,7 +1,7 @@
 {
   "branches": ["main"],
   "plugins": [
-    ["semantic-release-unsquash", {
+    ["semantic-release-githubsquash", {
       "commitAnalyzerConfig": {
         "preset": "conventionalcommits",
         "parserOpts": {
