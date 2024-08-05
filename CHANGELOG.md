@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/adrianbrowning/sr-test/compare/v1.2.7...v1.2.8) (2024-08-05)
+
+
+### Bug Fixes
+
+* switch to publish ([f2f95cc](https://github.com/adrianbrowning/sr-test/commit/f2f95cc635647cbf746de713d8cf2abd65fec6e2))
+
 ## [1.2.7](https://github.com/adrianbrowning/sr-test/compare/v1.2.6...v1.2.7) (2024-08-05)
 
 
