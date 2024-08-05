@@ -52,6 +52,6 @@
     "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
-    "semantic-release-unsquash": "file:semantic-release-unsquash-0.2.2.tgz"
+    "semantic-release-unsquash": "github:adrianbrowning/semantic-release-unsquash"
   }
 }
