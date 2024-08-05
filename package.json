@@ -48,8 +48,10 @@
     "lint-staged": "^15.2.8",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "semantic-release": "^24.0.0",
-    "semantic-release-githubsquash": "^0.2.12",
     "tslib": "^2.6.3",
     "typescript-eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "semantic-release-unsquash": "file:semantic-release-unsquash-0.2.1.tgz"
   }
 }

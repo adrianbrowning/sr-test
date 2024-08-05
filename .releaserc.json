@@ -1,7 +1,7 @@
 {
   "branches": ["main"],
   "plugins": [
-    ["semantic-release-githubsquash", {
+    ["semantic-release-unsquash", {
       "commitAnalyzerConfig": {
         "preset": "conventionalcommits",
         "parserOpts": {
@@ -16,25 +16,16 @@
         "writerOpts": {
           "commitsSort": ["subject", "scope"]
         }
-      }
-    }],
-    [
-      "@semantic-release/changelog",
-      {
+      },
+      "changeLogConfig": {
         "changelogFile": "CHANGELOG.md"
-      }
-    ],
-    [
-      "@semantic-release/git",
-      {
+      },
+      "gitConfig": {
         "assets": [
           "CHANGELOG.md"
         ]
-      }
-    ],
-    [
-      "@semantic-release/github",
-      {"assets": "*.tgz"}
-      ]
+      },
+      "githubConfig": {"assets": "*.tgz"}
+    }]
   ]
 }
