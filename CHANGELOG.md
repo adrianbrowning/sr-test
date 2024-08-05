@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/adrianbrowning/sr-test/compare/v1.2.6...v1.2.7) (2024-08-05)
+
+
+### Bug Fixes
+
+* split prepare and success ([663255c](https://github.com/adrianbrowning/sr-test/commit/663255c13bd9e55d9570ba1a02af0d3088aa9a42))
+
 ## [1.2.6](https://github.com/adrianbrowning/sr-test/compare/v1.2.5...v1.2.6) (2024-08-05)
 
 
