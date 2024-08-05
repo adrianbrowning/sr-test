@@ -30,6 +30,9 @@
         ]
       }
     ],
+    ["@semantic-release/exec", {
+      "success": "node .github/success.js ${nextRelease.version} && npm pack"
+    }],
     [
       "@semantic-release/github",
       {"assets": "*.tgz"}
