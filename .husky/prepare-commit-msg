@@ -1,4 +1,7 @@
 FILE=$1
+if [[ -z "${CI}" ]]; then
+  exit 0;
+fi;
 #if [[ $FILE == *'[skip ci]'* ]]; then
 #    exit 0;
 #fi;

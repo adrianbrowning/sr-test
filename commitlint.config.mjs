@@ -1,4 +1,4 @@
-import lint from "@commitlint/lint";
+// import lint from "@commitlint/lint";
 
 
 
