@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/adrianbrowning/sr-test/compare/v1.2.4...v1.2.5) (2024-08-05)
+
+
+### Bug Fixes
+
+* make sure to remove 'v' ([22a76f8](https://github.com/adrianbrowning/sr-test/commit/22a76f84f38ee00a95858299ae6f47a4c09825a0))
+
 ## [1.2.4](https://github.com/adrianbrowning/sr-test/compare/v1.2.3...v1.2.4) (2024-08-05)
 
 
