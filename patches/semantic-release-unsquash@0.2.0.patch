@@ -255,7 +255,7 @@ index 0000000000000000000000000000000000000000..727b8b5331dafaf054eb5f1d43a0531b
 +</project>
 \ No newline at end of file
 diff --git a/package.json b/package.json
-index c689feedd4fec1a7efefedb49ef7af6dbe1ead8b..c20697becf4235006eb2617e158208ed2a6cde9a 100644
+index c689feedd4fec1a7efefedb49ef7af6dbe1ead8b..00a1a00d17b1203b7d88bfde8d8a87b0f297904b 100644
 --- a/package.json
 +++ b/package.json
 @@ -3,6 +3,7 @@
@@ -266,7 +266,7 @@ index c689feedd4fec1a7efefedb49ef7af6dbe1ead8b..c20697becf4235006eb2617e158208ed
    "repository": {
      "type": "git",
      "url": "git+https://github.com/romap0/semantic-release-unsquash.git"
-@@ -32,8 +33,8 @@
+@@ -32,14 +33,14 @@
      "eslint:fix": "eslint src --fix"
    },
    "dependencies": {
@@ -277,6 +277,13 @@ index c689feedd4fec1a7efefedb49ef7af6dbe1ead8b..c20697becf4235006eb2617e158208ed
    },
    "devDependencies": {
      "@types/jest": "^29.4.0",
+     "eslint": "^8.33.0",
+     "eslint-config-universe": "^11.1.1",
+-    "jest": "^29.4.2",
++    "jest": "^29.7.0",
+     "prettier": "^2.8.3"
+   }
+ }
 diff --git a/src/get-unsquashed-commits.js b/src/get-unsquashed-commits.js
 index f32124a4f35a67d19fba8b22420d5e195977c703..15cbccd9d810df9c5bddd898f2300ba61197b5a1 100644
 --- a/src/get-unsquashed-commits.js
@@ -328,10 +335,10 @@ index 9be5ea84e80ff6ec9cbdae90f66e4bcf0012a521..1c30ffe543574725753c04122216fa42
  describe(getUnsquashedCommits.name, () => {
    it('should return unsquashed commits', () => {
 diff --git a/src/index.js b/src/index.js
-index c562453c68b28db4096a6b40dc2dfb7dad83bb13..226ef2999ba925f220951f0c6132247a48c70998 100644
+index c562453c68b28db4096a6b40dc2dfb7dad83bb13..890f21e114b0684324d038ea0f6b4dba0e85cb0f 100644
 --- a/src/index.js
 +++ b/src/index.js
-@@ -1,13 +1,11 @@
+@@ -1,13 +1,12 @@
 -const {
 -  analyzeCommits: originalAnalyzeCommits,
 -} = require('@semantic-release/commit-analyzer');
@@ -339,18 +346,20 @@ index c562453c68b28db4096a6b40dc2dfb7dad83bb13..226ef2999ba925f220951f0c6132247a
 -  generateNotes: originalGenerateNotes,
 -} = require('@semantic-release/release-notes-generator');
 +import { analyzeCommits as originalAnalyzeCommits } from '@semantic-release/commit-analyzer';
-+
-+import { generateNotes as originalGenerateNotes } from '@semantic-release/release-notes-generator';
-+
  
- const { getUnsquashedCommits } = require('./get-unsquashed-commits');
+-const { getUnsquashedCommits } = require('./get-unsquashed-commits');
++import { generateNotes as originalGenerateNotes } from '@semantic-release/release-notes-generator';
  
 -const analyzeCommits = async (pluginConfig, context) => {
++
++import { getUnsquashedCommits } from './get-unsquashed-commits';
++
++
 +export async function analyzeCommits(pluginConfig, context) {
    const { commitAnalyzerConfig } = pluginConfig || {};
    const commits = getUnsquashedCommits(context);
  
-@@ -15,9 +13,9 @@ const analyzeCommits = async (pluginConfig, context) => {
+@@ -15,9 +14,9 @@ const analyzeCommits = async (pluginConfig, context) => {
      ...context,
      commits,
    });
@@ -362,7 +371,7 @@ index c562453c68b28db4096a6b40dc2dfb7dad83bb13..226ef2999ba925f220951f0c6132247a
    const { notesGeneratorConfig } = pluginConfig || {};
    const commits = getUnsquashedCommits(context);
  
-@@ -25,6 +23,5 @@ const generateNotes = async (pluginConfig, context) => {
+@@ -25,6 +24,5 @@ const generateNotes = async (pluginConfig, context) => {
      ...context,
      commits,
    });
