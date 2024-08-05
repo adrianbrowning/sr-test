@@ -1,12 +1,9 @@
-import { createRequire } from "node:module";
-import { writeFileSync } from "node:fs";
-
-
+import fs from "node:fs";
+import { exec } from "node:child_process";
+import { promisify } from "node:util";
 import path from "node:path";
 
-import fs from "node:fs";
-
-let currentDir = process.cwd()
+let currentDir = process.cwd();
 
 while (currentDir !== path.parse(currentDir).dir) {
     if (fs.existsSync(path.join(currentDir, 'package.json'))) {
@@ -14,12 +11,26 @@ while (currentDir !== path.parse(currentDir).dir) {
     }
     currentDir = path.dirname(currentDir)
 }
+const pkgPath = currentDir + path.sep + "package.json";
 
-console.log('Root directory:', currentDir)
 const firstArgument = process.argv[2];
 
-const require = createRequire(import.meta.url);
-const pkg = require(currentDir + path.sep + "package.json");
+const pkg = JSON.parse(fs.readFileSync(pkgPath, {encoding: "utf-8"}));
 pkg.version = firstArgument;
 
-writeFileSync(currentDir + path.sep + "package.json", JSON.stringify(pkg, null, 2), {encoding: "utf8"});
+fs.writeFileSync(currentDir + path.sep + "package.json", JSON.stringify(pkg, null, 2), {encoding: "utf8"});
+
+
+const execPromise = promisify(exec);
+process.cwd(currentDir);
+try {
+    const { stdout, stderr } = await execPromise("npm pack");
+    if (stderr) {
+        console.error(`stderr: ${stderr}`);
+    }
+    console.log(`stdout: ${stdout}`);
+} catch (error) {
+    console.error(`Error executing npm pack: ${error}`);
+}
+
+

@@ -1,6 +1,5 @@
 {
   "name": "sr-test",
-  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -52,12 +51,13 @@
   },
   "dependencies": {
     "@semantic-release/exec": "^6.0.3",
-    "semantic-release-squash": "file:semantic-release-squash-0.0.2.tgz"
+    "semantic-release-squash": "file:libs/semantic-release-squash-0.0.2.tgz"
   },
   "pnpm": {
     "patchedDependencies": {
       "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch",
       "@semantic-release/release-notes-generator@14.0.1": "patches/@semantic-release__release-notes-generator@14.0.1.patch"
     }
-  }
+  },
+  "version": "1.2.1"
 }
