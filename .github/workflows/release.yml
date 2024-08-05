@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint commits
+        uses: wagoid/commitlint-github-action@v4
+        with:
+          configFile: commitlint.config.js
+
+      - name: Create npm pack
+        run: npm pack
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+
+#      - name: Publish to npm
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#        run: npm publish
+
+#      - name: Publish to JSR registry
+#        env:
+#          JSR_REGISTRY_TOKEN: ${{ secrets.JSR_REGISTRY_TOKEN }}
+#        run: |
+#          # Replace with actual publish command for your JSR registry
+#          curl -u user:${{ secrets.JSR_REGISTRY_TOKEN }} -T <path-to-jsr> <jsr-registry-url>
+
+      - name: Get package version
+        id: get_version
+        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+
+      - name: Create GitHub release and attach npm pack
+        uses: softprops/action-gh-release@v1
+        with:
+          files: '*.tgz'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ env.PACKAGE_VERSION }}

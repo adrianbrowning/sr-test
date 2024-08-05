@@ -1,0 +1,24 @@
+{
+  "name": "sr-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianbrowning/sr-test"
+  },
+  "private": true,
+  "devDependencies": {
+    "@semantic-release/cli": "",
+    "@semantic-release/npm" : "^12.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/cli": "^19.3.0"
+  }
+}
