@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/adrianbrowning/sr-test/compare/v1.2.5...v1.2.6) (2024-08-05)
+
+
+### Bug Fixes
+
+* logging ([4667178](https://github.com/adrianbrowning/sr-test/commit/46671786dee271dceff237bf9e360a7aaf3ce572))
+
 ## [1.2.5](https://github.com/adrianbrowning/sr-test/compare/v1.2.4...v1.2.5) (2024-08-05)
 
 
