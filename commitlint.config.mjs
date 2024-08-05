@@ -13,25 +13,19 @@ async function custBody({body}) {
         return [false, 'Body must not be empty'];
     }
     const lines = body.split('\n');
-    const bodyPattern = /^fix: .+$/;
-    if (lines.length > 0 && bodyPattern.test(lines[0])) {
+    if (lines.length > 0 ) {
         const result = await lint(body, bodyConfig);
         if (result.valid) {
             return [true];
         }
         return [false, result.errors.map(error => error.message).join('\n')];
     }
-    return [false, 'Body must start with: fix:'];
+    return [false, 'Body must have content'];
 }
 
 export default  {
 
     rules: {
-        // 'header-max-length': [2, 'always', 100],
-        // 'header-min-length': [2, 'always', 3],
-        // 'header-case': [2, 'always', 'lower-case'],
-
-        // 'body-max-line-length': [2, 'always', 100],
         'custom-header-format': [2, 'always', /^(\w+[-])?[0-9]+$/],
         'custom-body-format': [2, 'always', custBody]
     },
@@ -46,7 +40,6 @@ export default  {
                     return [false, 'Header must match pattern: issue-##'];
                 },
                 'custom-body-format': async (arg) => {
-                    console.log(arg)
                     const { body } = arg;
                     const result = await custBody({ body });
                     return result;
