@@ -51,6 +51,7 @@
     "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
+    "@semantic-release/exec": "^6.0.3",
     "semantic-release-squash": "file:semantic-release-squash-0.0.2.tgz"
   },
   "pnpm": {
