@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/adrianbrowning/sr-test/compare/v1.1.2...v1.2.0) (2024-08-05)
+
+
+### Bug Fixes
+
+* **core:** remove logging ([07372b3](https://github.com/adrianbrowning/sr-test/commit/07372b32737e6a3a843554f0eb769ec7e7525285))
+
+
+### Features
+
+* **core:** new feature ([8821653](https://github.com/adrianbrowning/sr-test/commit/8821653a879d5dff10f8cb9d42e72bbdbff5e16c))
+
 ## [1.1.2](https://github.com/adrianbrowning/sr-test/compare/v1.1.1...v1.1.2) (2024-08-05)
 
 
