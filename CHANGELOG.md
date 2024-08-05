@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/adrianbrowning/sr-test/compare/v1.2.2...v1.2.3) (2024-08-05)
+
+
+### Bug Fixes
+
+* switch to prepare ([89ae11b](https://github.com/adrianbrowning/sr-test/commit/89ae11be5ed96aac1b9e6b86c19133b9b3b47ab9))
+
 ## [1.2.2](https://github.com/adrianbrowning/sr-test/compare/v1.2.1...v1.2.2) (2024-08-05)
 
 
