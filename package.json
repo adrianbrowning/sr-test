@@ -51,5 +51,10 @@
     "semantic-release-unsquash": "^0.2.0",
     "tslib": "^2.6.3",
     "typescript-eslint": "^8.0.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "semantic-release-unsquash@0.2.0": "patches/semantic-release-unsquash@0.2.0.patch"
+    }
   }
 }
