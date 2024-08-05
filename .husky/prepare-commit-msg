@@ -1,5 +1,5 @@
 FILE=$1
-if [[ $FILE == *"[skip ci]"* ]]; then
+if [[ $FILE == *'[skip ci]'* ]]; then
     exit 0;
 fi;
 MESSAGE=$(cat $FILE)
