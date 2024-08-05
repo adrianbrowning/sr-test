@@ -12,7 +12,7 @@ while (currentDir !== path.parse(currentDir).dir) {
     currentDir = path.dirname(currentDir)
 }
 const pkgPath = currentDir + path.sep + "package.json";
-
+process.cwd(currentDir);
 console.log(`process.argv[2] => ${process.argv[2]}`);
 console.log(`process.cwd => ${process.cwd()}`);
 
