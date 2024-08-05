@@ -8,7 +8,7 @@ const bodyConfig = {
         "type-empty": [2, "never"],
 }
 
-const headerRegex = /(^(\w+[-])?[0-9]+$|^\w+\s+\d+\s+\(#\d+\)$)/;
+const headerRegex = /(^(\w+[-])?[0-9]+$|^\w+(\s+|-)\d+\s+\(#\d+\)$)/;
 
 async function custBody({body}) {
     if (!body) {
@@ -39,7 +39,7 @@ export default  {
                     if (headerPattern.test(header.trim())) {
                         return [true];
                     }
-                    return [false, 'Header must match pattern: ' + headerRegex.toString()];
+                    return [false, 'Header must match pattern: ' + headerRegex.toString(), `[${header.trim()}]`];
                 },
                 'custom-body-format': async (arg) => {
                     const { body } = arg;
