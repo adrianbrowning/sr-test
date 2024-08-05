@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  semantic-release-unsquash@0.2.0:
-    hash: t5ws2z4k57mtk2msd3td5zui7q
-    path: patches/semantic-release-unsquash@0.2.0.patch
-
 importers:
 
   .:
@@ -115,9 +110,9 @@ importers:
       semantic-release:
         specifier: ^24.0.0
         version: 24.0.0(typescript@5.5.4)
-      semantic-release-unsquash:
-        specifier: ^0.2.0
-        version: 0.2.0(patch_hash=t5ws2z4k57mtk2msd3td5zui7q)(semantic-release@24.0.0(typescript@5.5.4))
+      semantic-release-githubsquash:
+        specifier: ^0.2.12
+        version: 0.2.12(semantic-release@24.0.0(typescript@5.5.4))
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -2691,8 +2686,8 @@ packages:
     resolution: {integrity: sha512-CdASjNJPvRa7roO6Ra/gLYBTzYzzPyyBXxIMdGW3USQLyjWEls2RgW5UBTXaQVp+OrpeCK3bLem8smtmheoRuw==}
     engines: {node: '>= 0.4'}
 
-  semantic-release-unsquash@0.2.0:
-    resolution: {integrity: sha512-2qVEM4pEdzu2nHBUoOSIg1ODKpSMupkZUUC4U5DAVtL1bhOcHV+oCllAaBBiOZnihdmQgC/SvHUmBI2szfzTOg==}
+  semantic-release-githubsquash@0.2.12:
+    resolution: {integrity: sha512-onS95balQ+R9bscudG5UbRtAxlnOkxMtjUZa4Dm1UWZmAtHmnuCFJLIEsT/b7N3GE6ogv3Vl04nlR1hX6xTMOg==}
 
   semantic-release@24.0.0:
     resolution: {integrity: sha512-v46CRPw+9eI3ZuYGF2oAjqPqsfbnfFTwLBgQsv/lch4goD09ytwOTESMN4QIrx/wPLxUGey60/NMx+ANQtWRsA==}
@@ -6000,7 +5995,7 @@ snapshots:
       es-errors: 1.3.0
       is-regex: 1.1.4
 
-  semantic-release-unsquash@0.2.0(patch_hash=t5ws2z4k57mtk2msd3td5zui7q)(semantic-release@24.0.0(typescript@5.5.4)):
+  semantic-release-githubsquash@0.2.12(semantic-release@24.0.0(typescript@5.5.4)):
     dependencies:
       '@semantic-release/commit-analyzer': 9.0.2(semantic-release@24.0.0(typescript@5.5.4))
       '@semantic-release/release-notes-generator': 10.0.3(semantic-release@24.0.0(typescript@5.5.4))
