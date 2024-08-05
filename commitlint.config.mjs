@@ -36,10 +36,10 @@ export default  {
             rules: {
                 'custom-header-format': ({ header }) => {
                     const headerPattern = headerRegex;
-                    if (headerPattern.test(header)) {
+                    if (headerPattern.test(header.trim())) {
                         return [true];
                     }
-                    return [false, 'Header must match pattern: issue-##'];
+                    return [false, 'Header must match pattern: ' + headerRegex.toString()];
                 },
                 'custom-body-format': async (arg) => {
                     const { body } = arg;
