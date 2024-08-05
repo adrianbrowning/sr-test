@@ -1,6 +1,6 @@
 import fs from "node:fs";
-import { exec } from "node:child_process";
-import { promisify } from "node:util";
+// import { exec } from "node:child_process";
+// import { promisify } from "node:util";
 import path from "node:path";
 
 let currentDir = process.cwd();
@@ -24,16 +24,16 @@ pkg.version = firstArgument;
 fs.writeFileSync(currentDir + path.sep + "package.json", JSON.stringify(pkg, null, 2), {encoding: "utf8"});
 
 
-const execPromise = promisify(exec);
-process.cwd(currentDir);
-try {
-    const { stdout, stderr } = await execPromise("npm pack");
-    if (stderr) {
-        console.error(`stderr: ${stderr}`);
-    }
-    console.log(`stdout: ${stdout}`);
-} catch (error) {
-    console.error(`Error executing npm pack: ${error}`);
-}
-
-
+// const execPromise = promisify(exec);
+// process.cwd(currentDir);
+// try {
+//     const { stdout, stderr } = await execPromise("npm pack");
+//     if (stderr) {
+//         console.error(`stderr: ${stderr}`);
+//     }
+//     console.log(`stdout: ${stdout}`);
+// } catch (error) {
+//     console.error(`Error executing npm pack: ${error}`);
+// }
+//
+//
