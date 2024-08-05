@@ -1,3 +1,10 @@
+## [1.2.10](https://github.com/adrianbrowning/sr-test/compare/v1.2.9...v1.2.10) (2024-08-05)
+
+
+### Bug Fixes
+
+* switch to *cmd ([4b03357](https://github.com/adrianbrowning/sr-test/commit/4b03357f3bd46f1f04f85a4598d14a1ad16d89ca))
+
 ## [1.2.9](https://github.com/adrianbrowning/sr-test/compare/v1.2.8...v1.2.9) (2024-08-05)
 
 
