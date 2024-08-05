@@ -6,4 +6,3 @@ console.log("New feature!");
 console.log("New feature!");
 console.info("This is a fix!");
 console.info("This is a fix!");
-console.info("This is a fix!");
