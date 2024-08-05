@@ -17,7 +17,8 @@
       }],
     "@semantic-release/release-notes-generator",
     ["@semantic-release/exec", {
-      "prepare": "node .github/success.js ${nextRelease.version} && npm pack"
+      "prepare": "node .github/success.js ${nextRelease.version}",
+      "success": "npm pack"
     }],
     [
       "@semantic-release/changelog",
