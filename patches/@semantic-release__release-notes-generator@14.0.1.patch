@@ -1,0 +1,63 @@
+diff --git a/index.js b/index.js
+index 6377eae792e3a35e7cc5ab55e1ea20f0218db838..bf36d34d497bf977354698949a27dcb8f81753ba 100644
+--- a/index.js
++++ b/index.js
+@@ -29,7 +29,7 @@ const debug = debugFactory("semantic-release:release-notes-generator");
+  * @returns {String} The changelog for all the commits in `context.commits`.
+  */
+ export async function generateNotes(pluginConfig, context) {
+-  const { commits, lastRelease, nextRelease, options, cwd } = context;
++  const { commits, lastRelease, nextRelease, options, cwd, logger } = context;
+   const repositoryUrl = options.repositoryUrl.replace(/\.git$/i, "");
+   const { parserOpts, writerOpts } = await loadChangelogConfig(pluginConfig, context);
+ 
+@@ -45,7 +45,7 @@ export async function generateNotes(pluginConfig, context) {
+     find(HOSTS_CONFIG, (conf) => conf.hostname === hostname) || HOSTS_CONFIG.default;
+   const parser = new CommitParser({ referenceActions, issuePrefixes, ...parserOpts });
+   const parsedCommits = filterRevertedCommitsSync(
+-    commits
++    modifySquashedCommits({commits, logger})
+       .filter(({ message, hash }) => {
+         if (!message.trim()) {
+           debug("Skip commit %s with empty message", hash);
+@@ -91,3 +91,40 @@ export async function generateNotes(pluginConfig, context) {
+ 
+   return getStream(intoStream.object(parsedCommits).pipe(writer(changelogContext, writerOpts)));
+ }
++
++function modifySquashedCommits(context) {
++  const { commits, logger } = context;
++
++  const modifiedCommits = [];
++
++  for (const commit of commits) {
++    //logger.log('Commit: ' + commit.body);
++    //logger.log('Subject: ' + commit.subject);
++    //logger.log('Message: ' + commit.message);
++    const commitLines = commit.message.split('\n');
++    if (commitLines.length < 2) {
++      logger.log('Skipping github commit: ' + commit.message);
++      const newCommit = {
++        ...commit,
++      };
++      modifiedCommits.push(newCommit);
++    } else {
++      logger.log('Found github commit: ' + commit.message);
++
++      commitLines.shift();
++      commitLines.shift();
++      const [subject, , ...body] = commitLines;
++
++      const newCommit = {
++        ...commit,
++        subject,
++        body: body.join('\n'),
++        message: commitLines.join('\n'),
++      };
++      logger.log('Modified commit: ' + newCommit.message);
++      modifiedCommits.push(newCommit);
++    }
++  }
++
++  return modifiedCommits;
++}
