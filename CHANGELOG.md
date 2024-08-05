@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/adrianbrowning/sr-test/compare/v1.1.1...v1.1.2) (2024-08-05)
+
+
+### Bug Fixes
+
+* **ci:** change log ([c0f0d75](https://github.com/adrianbrowning/sr-test/commit/c0f0d757a8b71ec19dc69f4f6d4eb04a9f922978))
+
 ## [1.1.1](https://github.com/adrianbrowning/sr-test/compare/v1.1.0...v1.1.1) (2024-08-05)
 
 # [1.1.0](https://github.com/adrianbrowning/sr-test/compare/v1.0.1...v1.1.0) (2024-08-05)
