@@ -1,3 +1,10 @@
+## [1.2.9](https://github.com/adrianbrowning/sr-test/compare/v1.2.8...v1.2.9) (2024-08-05)
+
+
+### Bug Fixes
+
+* set process.cwd ([b13add6](https://github.com/adrianbrowning/sr-test/commit/b13add6c249e5cf895603dea1575d17d37fcee7a))
+
 ## [1.2.8](https://github.com/adrianbrowning/sr-test/compare/v1.2.7...v1.2.8) (2024-08-05)
 
 
