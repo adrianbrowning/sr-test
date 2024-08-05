@@ -34,15 +34,18 @@ export default  {
     plugins: [
         {
             rules: {
-                'custom-header-format': ({ header }) => {
+                'custom-header-format': (arg) => {
+                    const { header, body } = arg;
+                    if (body.includes('[skip ci]'))  return [true];
                     const headerPattern = headerRegex;
                     if (headerPattern.test(header.trim())) {
                         return [true];
                     }
-                    return [false, 'Header must match pattern: ' + headerRegex.toString(), `[${header.trim()}]`];
+                    return [false, 'Header must match pattern: ' + headerRegex.toString() + ` [${header.trim()}]`];
                 },
                 'custom-body-format': async (arg) => {
                     const { body } = arg;
+                    if (body.includes('[skip ci]'))  return [true];
                     const result = await custBody({ body });
                     return result;
                 }
