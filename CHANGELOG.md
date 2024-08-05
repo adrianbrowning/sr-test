@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/adrianbrowning/sr-test/compare/v1.2.1...v1.2.2) (2024-08-05)
+
+
+### Bug Fixes
+
+* npm pack feature ([67e8767](https://github.com/adrianbrowning/sr-test/commit/67e876741f9f1d456e829e3d20324c5fd58f9ccd))
+* Update package.lock ([73d8f27](https://github.com/adrianbrowning/sr-test/commit/73d8f277d3e21f947fe16dc72e5d559e1df537dd))
+
 ## [1.2.1](https://github.com/adrianbrowning/sr-test/compare/v1.2.0...v1.2.1) (2024-08-05)
 
 
