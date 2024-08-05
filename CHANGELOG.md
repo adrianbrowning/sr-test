@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/adrianbrowning/sr-test/compare/v1.2.3...v1.2.4) (2024-08-05)
+
+
+### Bug Fixes
+
+* move the asset builder ([b34a94a](https://github.com/adrianbrowning/sr-test/commit/b34a94a4eac8992218bbc0e4b726439b101476c9))
+
 ## [1.2.3](https://github.com/adrianbrowning/sr-test/compare/v1.2.2...v1.2.3) (2024-08-05)
 
 
