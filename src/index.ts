@@ -4,4 +4,8 @@ console.log("New feature!");
 console.log("New feature!");
 console.log("New feature!");
 console.log("New feature!");
+console.log("New feature!");
+console.log("New feature!2");
+console.info("This is a fix!2");
+console.info("This is a fix!");
 console.info("This is a fix!");
