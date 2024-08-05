@@ -37,8 +37,8 @@ jobs:
 #        with:
 #          configFile: commitlint.config.mjs
 
-      - name: Create npm pack
-        run: npm pack
+#      - name: Create npm pack
+#        run: npm pack
 
       - name: Release
         env:
