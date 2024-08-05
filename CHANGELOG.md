@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/adrianbrowning/sr-test/compare/v1.2.0...v1.2.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* Remove logger ([d6659a2](https://github.com/adrianbrowning/sr-test/commit/d6659a2f1f19a7eaa96594d4254548cbfba6dc3d))
+
 # [1.2.0](https://github.com/adrianbrowning/sr-test/compare/v1.1.2...v1.2.0) (2024-08-05)
 
 
