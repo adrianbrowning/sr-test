@@ -53,5 +53,10 @@
   },
   "dependencies": {
     "semantic-release-unsquash": "github:adrianbrowning/semantic-release-unsquash"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch"
+    }
   }
 }
