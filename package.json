@@ -19,6 +19,7 @@
     "@eslint/compat": "^1.1.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.5.0",
+    "@gingacodemonkey/semantic-release-unsquash": "^0.2.7",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
@@ -52,14 +53,7 @@
   "dependencies": {
     "@semantic-release/exec": "^6.0.3",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "semantic-release": "^24.0.0",
-    "semantic-release-githubsquash": "^0.2.12",
-    "semantic-release-squash": "file:libs/semantic-release-squash-0.0.2.tgz"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "semantic-release-githubsquash@0.2.12": "patches/semantic-release-githubsquash@0.2.12.patch"
-    }
+    "semantic-release": "^24.0.0"
   },
   "version": "2.1.0"
 }

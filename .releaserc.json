@@ -41,6 +41,10 @@
               "release": "patch"
             },
             {
+              "type": "refactor",
+              "release": "patch"
+            },
+            {
               "breaking": true,
               "release": "major"
             }
