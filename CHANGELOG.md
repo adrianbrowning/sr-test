@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/adrianbrowning/sr-test/compare/v1.2.10...v1.3.0) (2024-08-06)
+
+
+### Bug Fixes
+
+* a feat ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+* a fix ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+* a fix ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+* patched semantic-release-githubsquash ([eed7583](https://github.com/adrianbrowning/sr-test/commit/eed7583acd10984c523e674f5ced40307dbeb187))
+
+
+### Features
+
+* a feat ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+* a feat ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+* a feat2 ([b9929bb](https://github.com/adrianbrowning/sr-test/commit/b9929bb2af6aac2355b7ff4ca73e1fa95d129338))
+
 ## [1.2.10](https://github.com/adrianbrowning/sr-test/compare/v1.2.9...v1.2.10) (2024-08-05)
 
 
