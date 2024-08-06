@@ -51,12 +51,14 @@
   },
   "dependencies": {
     "@semantic-release/exec": "^6.0.3",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^24.0.0",
+    "semantic-release-githubsquash": "^0.2.12",
     "semantic-release-squash": "file:libs/semantic-release-squash-0.0.2.tgz"
   },
   "pnpm": {
     "patchedDependencies": {
-      "@semantic-release/commit-analyzer@13.0.0": "patches/@semantic-release__commit-analyzer@13.0.0.patch",
-      "@semantic-release/release-notes-generator@14.0.1": "patches/@semantic-release__release-notes-generator@14.0.1.patch"
+      "semantic-release-githubsquash@0.2.12": "patches/semantic-release-githubsquash@0.2.12.patch"
     }
   },
   "version": "2.1.0"

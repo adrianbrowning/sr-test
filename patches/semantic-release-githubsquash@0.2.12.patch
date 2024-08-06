@@ -1,0 +1,180 @@
+diff --git a/.idea/.idea.semantic-release-githubsquash.dir/.idea/encodings.xml b/.idea/.idea.semantic-release-githubsquash.dir/.idea/encodings.xml
+deleted file mode 100644
+index df87cf951fb4858ab7a76b68dd479c98b2df2404..0000000000000000000000000000000000000000
+diff --git a/.idea/.idea.semantic-release-githubsquash.dir/.idea/indexLayout.xml b/.idea/.idea.semantic-release-githubsquash.dir/.idea/indexLayout.xml
+deleted file mode 100644
+index f5a863a7cd38d778930569dd1b7a747ec2fff649..0000000000000000000000000000000000000000
+diff --git a/.idea/.idea.semantic-release-githubsquash.dir/.idea/vcs.xml b/.idea/.idea.semantic-release-githubsquash.dir/.idea/vcs.xml
+deleted file mode 100644
+index c8397c94c0e3faf3de616326ba8901e97fca11ca..0000000000000000000000000000000000000000
+diff --git a/package.json b/package.json
+index 32e67b258c4ffe28e1d3a24e4895936bd9d95ff6..b64e56fcf981a0d582fc15f1e222ed0abba23c60 100644
+--- a/package.json
++++ b/package.json
+@@ -9,6 +9,7 @@
+   },
+   "author": "Rune Ankerro Liljegren",
+   "license": "MIT",
++  "type": "module",
+   "bugs": {
+     "url": "https://github.com/RuneALiljegren/semantic-release-githubsquash/issues"
+   },
+diff --git a/src/get-unsquashed-commits.js b/src/get-unsquashed-commits.js
+index 990e228bc63d26c08aa4f7729c4f98424db515ec..bcc0165cc41ca9307a79790ec78c7fef79526cd7 100644
+--- a/src/get-unsquashed-commits.js
++++ b/src/get-unsquashed-commits.js
+@@ -1,43 +1,80 @@
+-const modifySquashedCommits = (context) => {
++export function modifySquashedCommits(context) {
++  debugger;
+   const { commits } = context;
+   const { logger } = context;
+ 
+   const modifiedCommits = [];
+ 
+-  for(const commit of commits)
+-  {
+-    //logger.log('Commit: ' + commit.body);
+-    //logger.log('Subject: ' + commit.subject);
+-    //logger.log('Message: ' + commit.message);
+-    const commitLines = commit.message.split('\n');
+-    if(commitLines.length < 2)
+-    {
+-      logger.log('Skipping github commit: ' + commit.message);
+-      const newCommit = {
+-        ...commit
+-      };
+-      modifiedCommits.push(newCommit);
+-    }
+-    else
+-    {
+-      logger.log('Found github commit: ' + commit.message);
+-      
+-      commitLines.shift();
+-      commitLines.shift();
+-      const [subject, , ...body] = commitLines;
++  for (const commit of commits) {
++    logger.log('Commit: ' + commit.body);
++    logger.log('Subject: ' + commit.subject);
++    logger.log('Message: ' + commit.message);
++    const commitLines = commit.message
++      .split('\n').reduce((acc, commit) => {
++        commit = commit.replace("\r", "");
++        if (commit.startsWith("*")) {
++          acc.push([commit]);
++          return acc;
++        }
++
++        acc.at(-1).push(commit);
+ 
++        return acc;
++      }, [[]]);
++    for (const pCommit of commitLines) {
++      if (pCommit.length < 2) {
++        logger.log('Skipping github commit: ' + commit.message);
++        const newCommit = {
++          ...commit,
++        };
++        modifiedCommits.push(newCommit);
++        continue;
++      }
++      //commit.shift();//remove title
++      // if (pCommit[0] === "") pCommit.shift(); // was to remove white space
++      const [subject, ...body] = pCommit;
++      const newBody = body.filter(Boolean).join('\n').trim();
+       const newCommit = {
+-      ...commit,
+-          subject: subject,
+-          body: body.join('\n'),
+-          message: commitLines.join('\n'),
++        ...commit,
++        subject: subject.replace("* ", ""),
++        body: newBody,
++        message: newBody,
++        type: newBody.match(/^(.*?):/)?.[1]
+       };
+       logger.log('Modified commit: ' + newCommit.message);
+       modifiedCommits.push(newCommit);
+     }
++
++
++
++      // .filter(commit => !commit.startsWith('*'))
++      // .filter(commit => !(commit === '' || commit === '\r'))
++      // .map(commit => commit.replace('\r', ''));
++
++
++    // if (commitLines.length < 2) {
++    //   logger.log('Skipping github commit: ' + commit.message);
++    //   const newCommit = {
++    //     ...commit,
++    //   };
++    //   modifiedCommits.push(newCommit);
++    // } else {
++    //   logger.log('Found github commit: ' + commit.message);
++    //
++    //   commitLines.shift();//remove title
++    //   // commitLines.shift(); // was to remove white space
++    //   const [subject, ...body] = commitLines;
++    //
++    //   const newCommit = {
++    //     ...commit,
++    //     subject: subject,
++    //     body: body.join('\n'),
++    //     message: commitLines.join('\n'),
++    //   };
++    //   logger.log('Modified commit: ' + newCommit.message);
++    //   modifiedCommits.push(newCommit);
++
+   }
+-  
+-   return modifiedCommits;
+-};
+ 
+-module.exports = { modifySquashedCommits };
++  return modifiedCommits;
++}
+diff --git a/src/index.js b/src/index.js
+index 7442a2170b02c1c642ed79fbb5b2f38e973c9ed6..a145f01f8ae3312f4c36b8a78d12a268208f90f4 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -1,13 +1,10 @@
+-const {
+-  analyzeCommits: originalAnalyzeCommits,
+-} = require('@semantic-release/commit-analyzer');
+-const {
+-  generateNotes: originalGenerateNotes,
+-} = require('@semantic-release/release-notes-generator');
++import { analyzeCommits as originalAnalyzeCommits } from '@semantic-release/commit-analyzer';
++import { generateNotes as originalGenerateNotes } from '@semantic-release/release-notes-generator';
+ 
+-const { modifySquashedCommits } = require('./get-unsquashed-commits');
++import { modifySquashedCommits } from './get-unsquashed-commits.js';
+ 
+-const analyzeCommits = async (pluginConfig, context) => {
++
++export async function analyzeCommits(pluginConfig, context) {
+   const { commitAnalyzerConfig } = pluginConfig || {};
+   const commits = modifySquashedCommits(context);
+ 
+@@ -15,9 +12,9 @@ const analyzeCommits = async (pluginConfig, context) => {
+     ...context,
+     commits,
+   });
+-};
++}
+ 
+-const generateNotes = async (pluginConfig, context) => {
++export async function generateNotes(pluginConfig, context) {
+   const { notesGeneratorConfig } = pluginConfig || {};
+   const commits = modifySquashedCommits(context);
+ 
+@@ -25,6 +22,6 @@ const generateNotes = async (pluginConfig, context) => {
+     ...context,
+     commits,
+   });
+-};
++}
++
+ 
+-module.exports = { analyzeCommits, generateNotes };
