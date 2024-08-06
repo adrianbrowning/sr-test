@@ -16,10 +16,12 @@
         ]
       }],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/exec", {
-      "prepareCmd": "node .github/success.js ${nextRelease.version}",
-      "publishCmd": "npm pack"
-    }],
+    [
+      "@semantic-release/npm", {
+      "npmPublish": false,
+      "tarballDir": "dist"
+    }
+    ],
     [
       "@semantic-release/changelog",
       {
@@ -36,7 +38,7 @@
     ],
     [
       "@semantic-release/github",
-      {"assets": "*.tgz"}
+      {"assets": "dist/*.tgz"}
     ]
   ]
 }
