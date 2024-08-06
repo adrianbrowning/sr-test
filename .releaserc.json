@@ -37,6 +37,10 @@
               "release": "patch"
             },
             {
+              "type": "chore",
+              "release": "patch"
+            },
+            {
               "breaking": true,
               "release": "major"
             }
@@ -51,6 +55,13 @@
       "@semantic-release/changelog",
       {
         "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false,
+        "tarballDir": "dist"
       }
     ],
     [
