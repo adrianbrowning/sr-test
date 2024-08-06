@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/adrianbrowning/sr-test/compare/v1.3.1...v1.3.2) (2024-08-06)
+
+
+### Bug Fixes
+
+* **ci:** release plugin ([cac6409](https://github.com/adrianbrowning/sr-test/commit/cac64092f6f0011772f2d28a5a763b0c6342fc15))
+
 ## [1.3.1](https://github.com/adrianbrowning/sr-test/compare/v1.3.0...v1.3.1) (2024-08-06)
 
 # [1.3.0](https://github.com/adrianbrowning/sr-test/compare/v1.2.10...v1.3.0) (2024-08-06)
