@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/adrianbrowning/sr-test/compare/v1.3.2...v1.4.0) (2024-10-20)
+
+
+### Bug Fixes
+
+* Bug fix ([0556b48](https://github.com/adrianbrowning/sr-test/commit/0556b48f9ec08f91823cbd1201ca94cc8f429609))
+
+
+### Features
+
+* new feature, issue-68 ([0556b48](https://github.com/adrianbrowning/sr-test/commit/0556b48f9ec08f91823cbd1201ca94cc8f429609))
+
 ## [1.3.2](https://github.com/adrianbrowning/sr-test/compare/v1.3.1...v1.3.2) (2024-08-06)
 
 
